@@ -455,11 +455,11 @@ public class Combat_map2 extends JApplet {
                 gPic.setFitWidth(1200);
                 root.getChildren().addAll(gPic);
 
-            } catch (FileNotFoundException ex) { 
+            }
+        catch (FileNotFoundException ex) {
+                System.out.println(ex.toString());
+            }
 
-                System.out.println(ex.toString()); 
-
-            } 
         //root.setStyle("-fx-background-color: #a2d5c6;");
         Button mm = new Button("Back to Menu");//Button that allows the user to return to the main menu
         mm.setOnAction(new EventHandler<ActionEvent>() {
@@ -513,7 +513,6 @@ public class Combat_map2 extends JApplet {
         root.getChildren().addAll(Denis,Garcia,Bottom,gLabel,gHP,dLabel,dHP,mm,quit);
        
         //reads txt file to dtermine which charcter the player has chosen
-        //Variables would reset every time Combat_map.main(null) was run, so normal methods like using a setter didn't work
         String fileName = "Character.txt";
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         int character=Integer.valueOf(br.readLine());
@@ -555,7 +554,7 @@ public class Combat_map2 extends JApplet {
           if(hsG==0){Gkeys();}//checks if Garcia is in hitstun, if they're not it reads the players key inputs
           if(hsD==0){Dkeys();}//checks if Denis is in hitstun, if they're not it reads the players key inputs
           
-          if (AID){//checks to see is an AI is playing, then calls its logic
+          if (AID){//checks to see if an AI is playing, then calls its logic
           if(!has_choice){choose_rndD();}
           AI_D();
           }
@@ -565,7 +564,7 @@ public class Combat_map2 extends JApplet {
           AI_G();
           }
          
-          buildattacks();//checks if the start up lag of an attack has ended, if so builds the attacks hitbox
+          buildattacks();//checks if the startup lag of an attack has ended, if so builds the attacks hitbox
           destroyattacks();//checks if the duration of an attack has ended, if so it removes the attacks hitbox
           
           movementG();//changes movement variables for Garcia, controls gravity, acceleration, and velocity cap
@@ -586,7 +585,7 @@ public class Combat_map2 extends JApplet {
         };
     
     
-      //encapulates resetting booleans to false to be checked again
+      //resets booleans to false, to be checked again
       public void reset(){
           ahGiDenis=false;
           ahGiahD=false;
